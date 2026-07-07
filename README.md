@@ -1,66 +1,101 @@
-# UCH mod loader
+# Barnyard
 
-A BepInEx mod manager for Ultimate Chicken Horse. Avalonia UI over a plain C# core.
+A mod loader and manager for **Ultimate Chicken Horse**.
 
-## Requirements
-- Visual Studio 2022 (17.8+) with the ".NET desktop development" workload
-- Optional: the "Avalonia for Visual Studio 2022" extension for the XAML previewer
+Browse community mods, install them with one click, group them into profiles for
+different kinds of play, and keep everything up to date automatically. Mod
+creators can upload, update, and manage their mods directly from the app.
+
+## Features
+
+- **One-click installs** — dependencies are resolved and installed automatically
+- **BepInEx handled for you** — installed automatically on first launch if missing
+- **Profiles** — save named sets of enabled mods and switch between them instantly
+- **Mod packs** — curated bundles that install as a ready-to-play profile
+- **Automatic updates** — see at a glance which mods have new versions, update all at once
+- **Creator tools** — upload mods with icons, tags, changelogs, and version history
+- **Private mods** — share unlisted mods with one-time access keys
+
+## Installation
+
+### Windows
+
+1. Download the latest `Barnyard-vX.X.X-win-x64.zip` from the
+   [Releases page](../../releases/latest)
+2. Extract the zip anywhere (e.g. a `Barnyard` folder in your Documents)
+3. Run the exe
+
+> **Note:** Windows may show a *"Windows protected your PC"* warning on first
+> run because the app isn't code-signed yet. Click **More info → Run anyway**.
+
+On first launch, Barnyard finds your Steam installation of Ultimate Chicken
+Horse automatically and offers to install BepInEx (the framework mods run on)
+if it isn't already present. Accept, and you're ready to browse and install
+mods.
+
+### Linux / Steam Deck (experimental)
+
+1. Download `Barnyard-vX.X.X-linux-x64.zip` from the
+   [Releases page](../../releases/latest) and extract it
+2. Make the app executable, then run it:
+   ```
+   chmod +x UCHModLoader.App
+   ./UCHModLoader.App
+   ```
+3. After Barnyard installs BepInEx, it will show a **Steam launch options**
+   string. In Steam, right-click Ultimate Chicken Horse → **Properties →
+   Launch Options**, and paste it in. Mods won't load until this is set
+   (one-time step).
+
+### macOS (experimental)
+
+1. Download the Mac build for your machine from the
+   [Releases page](../../releases/latest) — `osx-arm64` for Apple Silicon
+   (M1/M2/M3/M4), `osx-x64` for Intel Macs — and extract it
+2. macOS will block the app on first open because it isn't notarized.
+   **Right-click the app → Open**, then confirm — after the first time it
+   opens normally
+3. Follow the same Steam launch options step shown in the app (see the Linux
+   section above)
+
+> **Experimental platforms:** the Linux and macOS builds run, but mod injection
+> on these platforms hasn't been fully verified yet. If something doesn't work,
+> please [open an issue](../../issues) — reports from real hardware are hugely
+> appreciated.
 
 ## Getting started
-1. Open `UCHModLoader.sln`
-2. Set `UCHModLoader.App` as the startup project (right-click → Set as Startup Project)
-3. Press F5. NuGet packages restore automatically on first build.
 
-The app starts against a **mock mod repository** (fake mods, downloads are empty
-zips) so everything is clickable before any real infrastructure exists. Once you
-set a server URL in the loader (Upload tab → Login with Discord), it switches to
-the live server automatically. See the Server section below.
+- **Browse** — find mods, view details, and install. Use search, tags, and
+  sorting to explore
+- **Installed** — enable/disable mods, check for updates, and manage what's
+  active in your current profile
+- **Profiles** — click the profile name in the top-left to create and switch
+  between different mod setups
+- **Launch game** — always in the top-right; starts the game with your enabled
+  mods
 
-## Layout
-- `UCHModLoader.Core` — no UI dependencies. Steam locator, BepInEx manager,
-  GitHub index repository, install manager (state tracking, dependency
-  resolution, enable/disable), Steam launcher.
-- `UCHModLoader.App` — Avalonia UI. `App.axaml.cs` is the composition root
-  where interfaces are wired to implementations.
+## For mod creators
 
-## Conventions
-- Mods are zips extracted to `BepInEx/plugins/<ModId>/`
-- Install state lives at `%AppData%/UCHModLoader/installed.json`
-- Disable = rename `.dll` → `.dll.disabled` (BepInEx skips them)
-- Dependencies resolve and install/upgrade silently
-- Version constraints: `*`, `1.2.3`, `>=1.2.3`, `>1.2.3`, `<=1.2.3`, `<1.2.3`
+Log in with Discord from the top-left of the app, then head to the **Upload**
+tab:
 
+- Upload a BepInEx plugin (`.dll` or `.zip`) with a name, description, icon,
+  tags, and changelog
+- Push updates without version-number bookkeeping — players are prompted
+  automatically
+- Edit your mod's details any time without shipping a new build
+- Mark a mod **private** and share it via one-time access keys
 
-## Server (UCHModLoader.Server)
+Uploads from new creators are reviewed before appearing publicly. Once you're
+verified, your uploads go live immediately.
 
-ASP.NET Core API backed by MongoDB (metadata) + GridFS (mod zips and icons).
+## Requirements
 
-### Setup
-1. Fill in `UCHModLoader.Server/appsettings.json`:
-   - `Mongo:ConnectionString` and `Mongo:Database`
-   - `Discord:ClientId` / `Discord:ClientSecret` from your app at
-     discord.com/developers/applications (OAuth2 → add redirect
-     `http://localhost:5178/api/auth/discord/callback`)
-   - `PublicBaseUrl` — where clients reach the server
-2. Run the server (set as startup project, or `dotnet run` in its folder)
-3. In the loader's Upload tab: set the server URL, Login with Discord,
-   paste the token shown in the browser, choose a .dll or .zip, add an
-   icon/description/dependencies, Upload.
-4. Restart the loader (or Check updates) — the mod appears in Browse
-   with its icon. The loader switches from the mock repository to the
-   server automatically once a server URL is saved in settings.
+- The **Steam** version of Ultimate Chicken Horse
+- Windows 10/11 (or Linux/macOS via the experimental builds)
+- A Discord account (only needed for uploading, voting, and private mods —
+  browsing and installing work without logging in)
 
-### Upload pipeline
-DLL is inspected via System.Reflection.Metadata (never executed) to read
-[BepInPlugin(guid, name, version)] — guid/name/version come from the file,
-not from user input. First upload of a guid claims ownership for that
-Discord account. Server generates manifest.json, packages the zip, stores
-it in GridFS, and records a SHA-256 that the loader verifies on install.
+## License
 
-### Moderation
-- Set `Hidden: true` on a mod document to pull it from the index instantly
-- Set `Banned: true` on a user document to block their uploads
-
-### Tip: run App + Server together
-Right-click the solution → Configure Startup Projects → Multiple startup
-projects → set both UCHModLoader.App and UCHModLoader.Server to Start.
+MIT — see [LICENSE](LICENSE).
