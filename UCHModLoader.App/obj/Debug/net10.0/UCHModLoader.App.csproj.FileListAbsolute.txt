@@ -68,3 +68,4 @@ C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.App\obj\Debug\net10.0\Aval
 C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.App\obj\Debug\net10.0\Avalonia\Barnyard.pdb
 C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.App\obj\Debug\net10.0\refint\Avalonia\Barnyard.dll
 C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.App\obj\Debug\net10.0\ref\Barnyard.dll
+C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.App\obj\Debug\net10.0\UCHModLoader.App.sourcelink.json

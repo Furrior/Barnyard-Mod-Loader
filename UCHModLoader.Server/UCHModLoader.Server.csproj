@@ -9,7 +9,7 @@
 		<PackageReference Include="MongoDB.Driver" Version="2.28.0" />
 		<PackageReference Include="MongoDB.Driver.GridFS" Version="2.28.0" />
 		<PackageReference Include="SkiaSharp" Version="2.88.8" />
-		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.148.0" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.8" />
 		<PackageReference Include="System.Reflection.Metadata" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup>

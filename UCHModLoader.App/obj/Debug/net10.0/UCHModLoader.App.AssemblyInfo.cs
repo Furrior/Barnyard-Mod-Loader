@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Barnyard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+753066375f541bdb37c6decde9961f738b45e83b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1053ef515aa721305f2c0688d47d4c30f4f20d02")]
 [assembly: System.Reflection.AssemblyProductAttribute("Barnyard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Barnyard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,7 +4,8 @@ namespace UCHModLoader.App.Services;
 
 public sealed class AppSettings
 {
-    public const string DefaultServerUrl = "http://localhost:5178";
+    public const string DefaultServerUrl =
+        "https://barnyard-mod-loader-production.up.railway.app";
 
     public string ServerUrl { get; set; } = DefaultServerUrl;
     public string ApiToken { get; set; } = "";

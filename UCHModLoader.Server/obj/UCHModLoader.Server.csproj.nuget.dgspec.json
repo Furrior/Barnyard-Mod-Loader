@@ -417,7 +417,7 @@
             },
             "SkiaSharp.NativeAssets.Linux.NoDependencies": {
               "target": "Package",
-              "version": "[4.148.0, )"
+              "version": "[2.88.8, )"
             },
             "System.Reflection.Metadata": {
               "target": "Package",

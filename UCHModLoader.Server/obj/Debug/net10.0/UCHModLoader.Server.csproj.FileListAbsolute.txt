@@ -49,3 +49,8 @@ C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\r
 C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\linux-arm\native\libSkiaSharp.so
+C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\linux-arm64\native\libSkiaSharp.so
+C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\linux-musl-x64\native\libSkiaSharp.so
+C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\bin\Debug\net10.0\runtimes\linux-x64\native\libSkiaSharp.so
+C:\Users\grcar\source\repos\UCHModLoader\UCHModLoader.Server\obj\Debug\net10.0\UCHModLoader.Server.sourcelink.json

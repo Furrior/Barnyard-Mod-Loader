@@ -43,8 +43,9 @@ public static class IconProcessor
             using var encoded = image.Encode(SKEncodedImageFormat.Png, 100);
             return encoded?.ToArray();
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine($"[IconProcessor] {ex.GetType().Name}: {ex.Message}");
             return null;
         }
     }
