@@ -33,7 +33,7 @@ public sealed class BepInExManager : IBepInExManager
     public string? GetRequiredLaunchOptions(GameInstall game) => game.Platform switch
     {
         GamePlatform.LinuxProton => "WINEDLLOVERRIDES=\"winhttp=n,b\" %command%",
-        GamePlatform.LinuxNative or GamePlatform.MacOS => "./run_bepinex.sh %command%",
+        GamePlatform.LinuxNative or GamePlatform.MacOS => "eval $(echo \"%command%\" | sed 's#UltimateChickenHorse.x86_64#run_bepinex.sh#')",
         _ => null,
     };
 
