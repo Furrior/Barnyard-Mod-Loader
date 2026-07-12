@@ -56,7 +56,7 @@ jobs:
             UCHModLoader.App/UCHModLoader.App.csproj \
             --configuration Release \
             --runtime ${{ matrix.rid }} \
-            --self-contained false \
+            --self-contained \
             --output publish/${{ matrix.rid }}
 
       - name: Package
