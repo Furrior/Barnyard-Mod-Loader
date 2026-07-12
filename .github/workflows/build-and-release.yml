@@ -1,12 +1,9 @@
-name: Build&Release
+name: Build&Release Tag
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "v*"
-  pull_request:
 
 permissions:
   contents: read
