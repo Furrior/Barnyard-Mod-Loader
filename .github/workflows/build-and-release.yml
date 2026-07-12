@@ -75,6 +75,7 @@ jobs:
             *.zip
             *.tar.gz
           retention-days: 1
+          archive: false
 
   release:
     name: Create GitHub Release
@@ -95,6 +96,11 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
+
+      - name: Debug
+        run: |
+          ls
+          ls artifacts
 
       - name: Create Release
         env:
