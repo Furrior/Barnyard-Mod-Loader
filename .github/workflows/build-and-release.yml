@@ -75,7 +75,6 @@ jobs:
             *.zip
             *.tar.gz
           retention-days: 1
-          archive: false
 
   release:
     name: Create GitHub Release
@@ -100,6 +99,7 @@ jobs:
       - name: Debug
         run: |
           ls
+          echo ------
           ls artifacts
 
       - name: Create Release
